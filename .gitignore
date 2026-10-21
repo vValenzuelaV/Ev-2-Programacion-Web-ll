@@ -1,0 +1,40 @@
+# Dependencias
+node_modules/
+*/node_modules/
+.pnp
+.pnp.js
+
+# Base de datos local
+Backend/data/
+*.sqlite
+*.sqlite3
+
+# Variables de entorno (Secretos)
+.env
+.env.local
+.env.production
+Backend/.env
+Frontend/.env
+
+# Build y distribución
+dist/
+build/
+*.tsbuildinfo
+
+# Archivos subidos por usuarios
+Backend/uploads/*
+!Backend/uploads/.gitkeep
+
+# Logs y SO
+*.log
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Testing y reportes
+coverage/
+playwright-report/
+test-results/
+
+# Agentes locales
+.agents/
