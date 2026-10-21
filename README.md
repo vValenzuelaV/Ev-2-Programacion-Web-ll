@@ -109,10 +109,10 @@ npm test
 │   ├── .env.example
 │   └── package.json
 │
-├── Documentacion_Evaluacion_2/     # Documentación técnica y académica
-│   ├── INFORME_TECNICO.md          # Decisiones de diseño y matriz OWASP
-│   └── BITACORA_IA.md              # Bitácora de prompts y decisiones
+├── e2e/                        # Pruebas Playwright E2E
+│   └── flujo-completo.spec.ts
 │
 ├── .gitignore
+├── ia_log.md                   # Bitácora de uso de IA y prompts (según rúbrica)
 └── README.md
 ```
