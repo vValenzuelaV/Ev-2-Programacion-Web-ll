@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+    <script type="module">import { injectIntoGlobalHook } from "/@react-refresh";
+injectIntoGlobalHook(window);
+window.$RefreshReg$ = () => {};
+window.$RefreshSig$ = () => (type) => type;</script>
+
+    <script type="module" src="/@vite/client"></script>
+
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Harmonía - Tienda de instrumentos musicales con guitarras, teclados, percusión, vientos y audio profesional con garantía oficial.">
+    <title>Harmonía | Tienda de Instrumentos Musicales</title>
+  <style type="text/css" data-vite-dev-id="C:/Users/56966/Desktop/Evaluacion 2/Frontend/src/index.css">/* ====================================================================
+   HARMONÍA TIENDA DE INSTRUMENTOS MUSICALES - SISTEMA DE DISEÑO
+   Cumplimiento estricto WCAG 2.2 Nivel AA & Mobile-First (320px+)
+   ==================================================================== */
+
+:root {
+  /* Paleta cromática inspirada en maderas nobles, bronce y ébano */
+  --bg-principal: #0d0e12;
+  --bg-superficie: #161820;
+  --bg-tarjeta: #1c1f2b;
+  --bg-elevado: #242838;
+  --bg-hover: #2d3246;
+
+  --borde-suave: #2d3345;
+  --borde-fuerte: #3f4761;
+
+  /* Colores de acento: Oro y Ámbar Musical */
+  --color-dorado: #d97706;
+  --color-dorado-brillante: #f59e0b;
+  --color-dorado-luz: #fef3c7;
+  --color-dorado-bg: rgba(217, 119, 6, 0.15);
+
+  /* Texto de alto contraste para WCAG 2.2 AA (Mínimo 4.5:1, aquí > 9:1) */
+  --texto-titulos: #f8fafc;
+  --texto-cuerpo: #e2e8f0;
+  --texto-secundario: #94a3b8;
+  --texto-atenuado: #64748b;
+
+  /* Estados */
+  --color-exito: #10b981;
+  --color-exito-bg: rgba(16, 185, 129, 0.15);
+  --color-error: #ef4444;
+  --color-error-bg: rgba(239, 68, 68, 0.15);
+  --color-alerta: #f59e0b;
+  --color-alerta-bg: rgba(245, 158, 11, 0.15);
+  --color-info: #38bdf8;
+  --color-info-bg: rgba(56, 189, 248, 0.15);
+
+  /* Foco visible accesible */
+  --foco-visible: #f59e0b;
+
+  /* Tipografía */
+  --fuente-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --fuente-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Elevaciones / Sombras */
+  --sombra-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --sombra-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+  --sombra-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.4);
+}
+
+/* Reset y caja */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--fuente-sans);
+  background-color: var(--bg-principal);
+  color: var(--texto-cuerpo);
+  line-height: 1.5;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-principal);
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Enlace accesible para saltar al contenido principal con teclado */
+.enlace-saltar {
+  position: absolute;
+  top: -999px;
+  left: 1rem;
+  background: var(--color-dorado-brillante);
+  color: #000;
+  padding: 0.75rem 1.25rem;
+  font-weight: 700;
+  border-radius: 0.375rem;
+  z-index: 9999;
+  text-decoration: none;
+}
+
+.enlace-saltar:focus {
+  top: 1rem;
+  outline: 3px solid #fff;
+}
+
+/* Foco visible estricto WCAG 2.2 */
+:focus-visible {
+  outline: 3px solid var(--foco-visible) !important;
+  outline-offset: 2px !important;
+}
+
+/* Tipografía jerárquica */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--texto-titulos);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+h1 { font-size: 2.25rem; }
+h2 { font-size: 1.75rem; }
+h3 { font-size: 1.25rem; }
+
+a {
+  color: var(--color-dorado-brillante);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* Contenedores y Layout */
+.contenedor {
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .contenedor {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+/* Botones con tamaño táctil mínimo >= 44x44px */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+  text-decoration: none;
+  font-family: inherit;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-primario {
+  background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+  color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+.btn-primario:hover:not(:disabled) {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  color: #ffffff;
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.btn-secundario {
+  background-color: var(--bg-elevado);
+  color: var(--texto-titulos);
+  border-color: var(--borde-fuerte);
+}
+.btn-secundario:hover:not(:disabled) {
+  background-color: var(--bg-hover);
+  text-decoration: none;
+}
+
+.btn-peligro {
+  background-color: var(--color-error);
+  color: #ffffff;
+}
+.btn-peligro:hover:not(:disabled) {
+  background-color: #dc2626;
+  text-decoration: none;
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--color-dorado-brillante);
+  border-color: var(--color-dorado);
+}
+.btn-outline:hover:not(:disabled) {
+  background-color: var(--color-dorado-bg);
+  text-decoration: none;
+}
+
+/* Formularios accesibles */
+.grupo-formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  margin-bottom: 1.25rem;
+  text-align: left;
+}
+
+.etiqueta-formulario {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--texto-cuerpo);
+}
+
+.campo-formulario {
+  min-height: 44px;
+  width: 100%;
+  padding: 0.625rem 0.875rem;
+  background-color: var(--bg-superficie);
+  border: 1px solid var(--borde-suave);
+  border-radius: 0.375rem;
+  color: var(--texto-titulos);
+  font-size: 0.9375rem;
+  font-family: inherit;
+  transition: border-color 0.15s ease;
+}
+
+.campo-formulario:focus {
+  border-color: var(--color-dorado-brillante);
+}
+
+.campo-formulario.campo-error {
+  border-color: var(--color-error);
+}
+
+.texto-error {
+  font-size: 0.8125rem;
+  color: #fca5a5;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-weight: 500;
+}
+
+.texto-ayuda {
+  font-size: 0.8125rem;
+  color: var(--texto-secundario);
+}
+
+/* Badges y etiquetas */
+.insignia {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.625rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.insignia-dorada {
+  background-color: var(--color-dorado-bg);
+  color: var(--color-dorado-brillante);
+  border: 1px solid rgba(217, 119, 6, 0.3);
+}
+
+.insignia-exito {
+  background-color: var(--color-exito-bg);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.insignia-peligro {
+  background-color: var(--color-error-bg);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.insignia-info {
+  background-color: var(--color-info-bg);
+  color: #7dd3fc;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+/* Alertas */
+.alerta {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1.25rem;
+  border: 1px solid transparent;
+}
+
+.alerta-error {
+  background-color: var(--color-error-bg);
+  border-color: rgba(239, 68, 68, 0.4);
+  color: #fecaca;
+}
+
+.alerta-exito {
+  background-color: var(--color-exito-bg);
+  border-color: rgba(16, 185, 129, 0.4);
+  color: #a7f3d0;
+}
+
+.alerta-alerta {
+  background-color: var(--color-alerta-bg);
+  border-color: rgba(245, 158, 11, 0.4);
+  color: #fde68a;
+}
+
+/* Tarjetas de Producto */
+.cuadricula-productos {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .cuadricula-productos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .cuadricula-productos {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1280px) {
+  .cuadricula-productos {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.tarjeta-producto {
+  background-color: var(--bg-tarjeta);
+  border: 1px solid var(--borde-suave);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tarjeta-producto:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-dorado);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.imagen-tarjeta {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  background-color: var(--bg-elevado);
+}
+
+.cuerpo-tarjeta {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* Modales y Diálogos */
+.modal-fondo {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 1000;
+}
+
+.modal-contenido {
+  background-color: var(--bg-tarjeta);
+  border: 1px solid var(--borde-fuerte);
+  border-radius: 0.75rem;
+  width: 100%;
+  max-width: 540px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 1.5rem;
+  box-shadow: var(--sombra-lg);
+}
+
+/* Tablas Responsivas (se adaptan en móvil a tarjetas) */
+.tabla-responsiva {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabla-responsiva th,
+.tabla-responsiva td {
+  padding: 0.875rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--borde-suave);
+}
+
+.tabla-responsiva th {
+  background-color: var(--bg-superficie);
+  color: var(--texto-secundario);
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 768px) {
+  .tabla-movil-tarjeta thead {
+    display: none;
+  }
+  .tabla-movil-tarjeta, 
+  .tabla-movil-tarjeta tbody, 
+  .tabla-movil-tarjeta tr, 
+  .tabla-movil-tarjeta td {
+    display: block;
+    width: 100%;
+  }
+  .tabla-movil-tarjeta tr {
+    background-color: var(--bg-tarjeta);
+    border: 1px solid var(--borde-suave);
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+  }
+  .tabla-movil-tarjeta td {
+    border-bottom: none;
+    padding: 0.375rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .tabla-movil-tarjeta td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: var(--texto-secundario);
+    font-size: 0.8125rem;
+  }
+}
+</style></head>
+  <body>
+    <div id="root"><a href="#contenido-principal" class="enlace-saltar">Saltar directamente al contenido principal</a><header style="background-color: var(--bg-superficie); border-bottom: 1px solid var(--borde-suave); position: sticky; top: 0px; z-index: 100;"><div class="contenedor" style="display: flex; align-items: center; justify-content: space-between; height: 72px;"><a aria-label="Harmonía Tienda de Instrumentos Musicales - Inicio" href="/" data-discover="true" style="display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--texto-titulos);"><div style="background-color: var(--color-dorado-bg); padding: 0.5rem; border-radius: 0.5rem; border: 1px solid rgba(217, 119, 6, 0.4); display: flex; align-items: center; justify-content: center;"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--color-dorado-brillante)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eighth-notes lucide-music" aria-hidden="true"><path d="M21 16V3a1 1 0 0 0-1.28-.96l-10 2.917a1 1 0 0 0-.72.96V19"></path><circle cx="18" cy="16" r="3"></circle><circle cx="6" cy="19" r="3"></circle></svg></div><div><span style="font-size: 1.25rem; font-weight: 800; letter-spacing: -0.025em; display: block; line-height: 1.1;">HARMONÍA</span><span style="font-size: 0.75rem; color: var(--color-dorado-brillante); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600;">Instrumentos Musicales</span></div></a><nav aria-label="Navegación principal" class="nav-escritorio" style="display: none;"><ul style="display: flex; align-items: center; gap: 1.5rem; list-style: none;"><li><a href="/" data-discover="true" style="color: var(--color-dorado-brillante); font-weight: 700; font-size: 0.9375rem; display: flex; align-items: center; gap: 0.375rem;"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-bag" aria-hidden="true"><path d="M16 10a4 4 0 0 1-8 0"></path><path d="M3.103 6.034h17.794"></path><path d="M3.4 5.467a2 2 0 0 0-.4 1.2V20a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6.667a2 2 0 0 0-.4-1.2l-2-2.667A2 2 0 0 0 17 2H7a2 2 0 0 0-1.6.8z"></path></svg>Catálogo</a></li></ul></nav><div class="auth-escritorio" style="display: none; align-items: center; gap: 1rem;"><div style="display: flex; align-items: center; gap: 0.75rem;"><a class="btn btn-outline" href="/iniciar-sesion" data-discover="true" style="padding: 0.5rem 1rem; font-size: 0.875rem;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-log-in" aria-hidden="true"><path d="m10 17 5-5-5-5"></path><path d="M15 12H3"></path><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path></svg>Iniciar Sesión</a><a class="btn btn-primario" href="/registro" data-discover="true" style="padding: 0.5rem 1rem; font-size: 0.875rem;">Registrarse</a></div></div><button type="button" class="btn btn-secundario boton-menu-movil" aria-expanded="false" aria-controls="menu-movil" aria-label="Abrir menú principal" style="min-width: 44px; min-height: 44px; padding: 0.5rem;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu" aria-hidden="true"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg></button></div><style>
+        @media (min-width: 768px) {
+          .nav-escritorio { display: block !important; }
+          .auth-escritorio { display: flex !important; }
+          .boton-menu-movil { display: none !important; }
+        }
+      </style></header><div style="flex: 1 1 0%; display: flex; flex-direction: column;"><main id="contenido-principal" class="contenedor" style="padding-bottom: 4rem;"><section aria-labelledby="titulo-banner" style="margin-top: 1.5rem; margin-bottom: 2rem; padding: 2.5rem 1.5rem; background-color: var(--bg-tarjeta); border-radius: 1rem; border: 1px solid var(--borde-suave); background-image: radial-gradient(at right top, rgba(217, 119, 6, 0.15), transparent 70%); text-align: center;"><div style="display: inline-flex; align-items: center; gap: 0.5rem; background-color: var(--color-dorado-bg); padding: 0.375rem 0.875rem; border-radius: 9999px; margin-bottom: 1rem; border: 1px solid rgba(217, 119, 6, 0.3);"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-dorado-brillante)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles lucide-stars" aria-hidden="true"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"></path><path d="M20 2v4"></path><path d="M22 4h-4"></path><circle cx="4" cy="20" r="2"></circle></svg><span style="font-size: 0.8125rem; font-weight: 600; color: var(--color-dorado-brillante);">Catálogo Oficial 2026</span></div><h1 id="titulo-banner" style="font-size: 2.5rem; margin-bottom: 0.75rem; letter-spacing: -0.025em;">Encuentra el Sonido de tu Pasión</h1><p style="font-size: 1.125rem; color: var(--texto-secundario); max-width: 640px; margin: 0px auto 1.5rem; line-height: 1.6;">Explora guitarras legendarias, baterías acústicas, teclados de concierto y equipo de audio profesional con garantía oficial.</p><div style="max-width: 560px; margin: 0px auto;"><form role="search" aria-label="Búsqueda de instrumentos"><div style="position: relative; display: flex; align-items: center;"><label for="campo-busqueda-catalogo" style="position: absolute; width: 1px; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0px, 0px, 0px, 0px); white-space: nowrap; border: 0px;">Buscar instrumentos por nombre, SKU o descripción</label><input id="campo-busqueda-catalogo" placeholder="Buscar por nombre, modelo (ej. Stratocaster, Les Paul)..." class="campo-formulario" type="search" value="" style="padding-left: 2.75rem; padding-right: 1rem; height: 48px; border-radius: 9999px; background-color: var(--bg-principal);"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--texto-secundario)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search" aria-hidden="true" style="position: absolute; left: 1rem; pointer-events: none;"><path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle></svg></div></form></div></section><section aria-label="Filtros del catálogo" style="margin-bottom: 2rem;"><div role="tablist" aria-label="Categorías de instrumentos" style="display: flex; align-items: center; gap: 0.5rem; overflow-x: auto; padding-bottom: 0.75rem; margin-bottom: 1rem;"><button type="button" class="btn btn-primario" role="tab" aria-selected="true" style="border-radius: 9999px; font-size: 0.875rem; padding: 0.5rem 1rem;">Todas las Categorías</button></div><div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem; background-color: var(--bg-superficie); border-radius: 0.5rem; border: 1px solid var(--borde-suave);"><div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;"><div style="display: flex; align-items: center; gap: 0.5rem;"><label for="filtro-marca" style="font-size: 0.875rem; font-weight: 600; color: var(--texto-secundario);">Marca:</label><select id="filtro-marca" class="campo-formulario" style="min-height: 38px; height: 38px; padding: 0.25rem 0.75rem; font-size: 0.875rem; width: auto;"><option value="">Todas las marcas</option></select></div><div style="display: flex; align-items: center; gap: 0.5rem;"><label for="filtro-orden" style="font-size: 0.875rem; font-weight: 600; color: var(--texto-secundario);">Ordenar por:</label><select id="filtro-orden" class="campo-formulario" style="min-height: 38px; height: 38px; padding: 0.25rem 0.75rem; font-size: 0.875rem; width: auto;"><option value="id-desc">Más recientes</option><option value="precio-asc">Precio: menor a mayor</option><option value="precio-desc">Precio: mayor a menor</option><option value="nombre-asc">Nombre: A - Z</option><option value="stock-desc">Mayor stock disponible</option></select></div></div><div style="font-size: 0.875rem; color: var(--texto-secundario);">Mostrando <strong>0</strong> de <strong>0</strong> instrumentos</div></div></section><section aria-label="Listado de instrumentos" aria-live="polite"><div aria-live="polite" aria-busy="true" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 4rem 1rem; gap: 1rem;"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-dorado-brillante)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-loader-circle lucide-loader-2 animar-giro" aria-hidden="true"><path d="M21 12a9 9 0 1 1-6.219-8.56"></path></svg><p style="font-size: 1rem; color: var(--texto-secundario); font-weight: 500;">Cargando instrumentos de la tienda...</p><style>
+        @keyframes girar {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        .animar-giro {
+          animation: girar 1s linear infinite;
+        }
+      </style></div></section></main></div><footer style="background-color: var(--bg-superficie); border-top: 1px solid var(--borde-suave); margin-top: auto; padding: 3rem 0px 2rem;"><div class="contenedor"><div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem; margin-bottom: 2rem;"><div><div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-dorado-brillante)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eighth-notes lucide-music" aria-hidden="true"><path d="M21 16V3a1 1 0 0 0-1.28-.96l-10 2.917a1 1 0 0 0-.72.96V19"></path><circle cx="18" cy="16" r="3"></circle><circle cx="6" cy="19" r="3"></circle></svg><span style="font-size: 1.125rem; font-weight: 800; color: var(--texto-titulos);">HARMONÍA</span></div><p style="font-size: 0.875rem; color: var(--texto-secundario); line-height: 1.6;">Tienda especializada en guitarras, teclados, vientos, percusión y audio profesional de las mejores marcas del mundo.</p></div><div><div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-exito)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg><h2 style="font-size: 1rem; color: var(--texto-titulos); margin: 0px;">Seguridad &amp; Accesibilidad</h2></div><ul style="list-style: none; font-size: 0.875rem; color: var(--texto-secundario); display: flex; flex-direction: column; gap: 0.5rem;"><li>✓ Cumplimiento WCAG 2.2 Nivel AA</li><li>✓ Autenticación Robusta con JWT</li><li>✓ Control de Acceso por Roles (RBAC)</li><li>✓ Mitigación OWASP API Security Top 10</li></ul></div><div><h2 style="font-size: 1rem; color: var(--texto-titulos); margin-bottom: 1rem;">Evaluación 2 - Frontend</h2><p style="font-size: 0.875rem; color: var(--texto-secundario); line-height: 1.6;"><strong>Lenguaje Programación Web II</strong><br>Consumo de API RESTful, seguridad de extremo a extremo y diseño responsivo adaptado a móvil y escritorio.</p></div></div><div style="border-top: 1px solid var(--borde-suave); padding-top: 1.5rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; font-size: 0.8125rem; color: var(--texto-atenuado);"><p>© 2026 Harmonía Music Store. Todos los derechos reservados.</p><p style="display: flex; align-items: center; gap: 0.375rem;">Desarrollado con React 19, TypeScript y Vite</p></div></div></footer></div>
+    <script type="module" src="/src/main.tsx"></script>
+  
+
+</body></html>
