@@ -22,10 +22,8 @@ test.describe('Flujo End-to-End: Autenticación y Operación CRUD', () => {
 
     // 5. Completar formulario con datos del nuevo instrumento
     const nombreInstrumento = `Bajo Eléctrico Pro E2E - ${Date.now()}`;
-    const sku = `E2E-BASS-${Date.now().toString().slice(-4)}`;
 
     await page.fill('#campo-nombre', nombreInstrumento);
-    await page.fill('#campo-sku', sku);
     await page.selectOption('#campo-categoria', { index: 1 });
     await page.selectOption('#campo-marca', { index: 1 });
     await page.fill('#campo-precio', '649990');

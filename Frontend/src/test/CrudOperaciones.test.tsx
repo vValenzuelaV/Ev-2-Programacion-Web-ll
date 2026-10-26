@@ -78,9 +78,6 @@ describe('Operaciones CRUD - Creación de Instrumento con API Simulada', () => {
     fireEvent.change(screen.getByLabelText(/Nombre del Instrumento/i), {
       target: { value: 'Bajo Jazz Bass Custom' },
     });
-    fireEvent.change(screen.getByLabelText(/Código SKU/i), {
-      target: { value: 'FEN-JBASS-01' },
-    });
     fireEvent.change(screen.getByLabelText(/Categoría/i), {
       target: { value: '1' },
     });
@@ -101,7 +98,6 @@ describe('Operaciones CRUD - Creación de Instrumento con API Simulada', () => {
       expect(crearSpy).toHaveBeenCalledWith(
         expect.objectContaining({
           nombre: 'Bajo Jazz Bass Custom',
-          codigo_sku: 'FEN-JBASS-01',
           precio: 1299990,
           stock: 3,
         })
