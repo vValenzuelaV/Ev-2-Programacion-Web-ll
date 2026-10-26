@@ -118,7 +118,7 @@ export const FormularioInstrumentoPage: React.FC = () => {
     const errs: Record<string, string> = {};
 
     if (!nombre.trim()) errs['nombre'] = 'El nombre del instrumento es obligatorio.';
-    if (!codigoSku.trim()) errs['codigo_sku'] = 'El código SKU es obligatorio.';
+    if (esEdicion && !codigoSku.trim()) errs['codigo_sku'] = 'El código SKU es obligatorio.';
     if (!categoriaId) errs['categoria_id'] = 'Selecciona una categoría válida.';
     if (!marcaId) errs['marca_id'] = 'Selecciona una marca válida.';
 
@@ -143,7 +143,7 @@ export const FormularioInstrumentoPage: React.FC = () => {
     try {
       const cuerpo = {
         nombre: nombre.trim(),
-        codigo_sku: codigoSku.trim().toUpperCase(),
+        codigo_sku: codigoSku.trim() ? codigoSku.trim().toUpperCase() : undefined,
         categoria_id: Number(categoriaId),
         marca_id: Number(marcaId),
         precio: parseFloat(precio),
@@ -250,18 +250,18 @@ export const FormularioInstrumentoPage: React.FC = () => {
             {}
             <div className="grupo-formulario">
               <label htmlFor="campo-sku" className="etiqueta-formulario">
-                Código SKU Único <span style={{ color: 'var(--color-error)' }}>*</span>
+                Código SKU {esEdicion ? <span style={{ color: 'var(--color-error)' }}>*</span> : <span style={{ fontSize: '0.8rem', color: 'var(--texto-secundario)', fontWeight: 'normal' }}>(automático si se deja vacío)</span>}
               </label>
               <input
                 id="campo-sku"
                 type="text"
-                required
+                required={esEdicion}
                 value={codigoSku}
                 onChange={(e) => setCodigoSku(e.target.value.toUpperCase())}
                 className={`campo-formulario ${erroresCampos['codigo_sku'] ? 'campo-error' : ''}`}
                 aria-invalid={Boolean(erroresCampos['codigo_sku'])}
                 aria-describedby={erroresCampos['codigo_sku'] ? 'error-sku' : undefined}
-                placeholder="FEN-AMPRO2-STRAT-3TS"
+                placeholder={esEdicion ? "FEN-AMPRO2-STRAT-3TS" : "Generado automáticamente por el sistema"}
               />
               {erroresCampos['codigo_sku'] && (
                 <span id="error-sku" className="texto-error" role="alert">{erroresCampos['codigo_sku']}</span>

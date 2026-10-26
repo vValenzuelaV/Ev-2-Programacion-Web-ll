@@ -14,8 +14,8 @@ export const especificacionSchema = z.object({
 export const crearInstrumentoSchema = z.object({
   nombre: z.string().min(2, 'El nombre debe tener al menos 2 caracteres').max(150).optional(),
   name: z.string().min(2).max(150).optional(),
-  codigo_sku: z.string().min(2, 'El código SKU debe tener al menos 2 caracteres').max(50).optional(),
-  sku: z.string().min(2).max(50).optional(),
+  codigo_sku: z.string().max(50).optional(),
+  sku: z.string().max(50).optional(),
   categoria_id: z.coerce.number().int().positive('Debe seleccionar una categoría válida'),
   marca_id: z.coerce.number().int().positive('Debe seleccionar una marca válida'),
   precio: z.coerce.number().min(0, 'El precio no puede ser negativo').optional(),
@@ -34,9 +34,6 @@ export const crearInstrumentoSchema = z.object({
 }).refine(data => data.nombre || data.name, {
   message: 'El nombre del instrumento es obligatorio',
   path: ['nombre'],
-}).refine(data => data.codigo_sku || data.sku, {
-  message: 'El código SKU es obligatorio',
-  path: ['codigo_sku'],
 }).refine(data => data.precio !== undefined || data.price !== undefined, {
   message: 'El precio es obligatorio',
   path: ['precio'],

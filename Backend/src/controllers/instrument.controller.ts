@@ -331,7 +331,7 @@ export function getInstrumentById(req: Request, res: Response, next: NextFunctio
 export function createInstrument(req: Request, res: Response, next: NextFunction): void {
   try {
     const nombre = req.body.nombre || req.body.name;
-    const codigo_sku = req.body.codigo_sku || req.body.sku;
+    let codigo_sku = (req.body.codigo_sku || req.body.sku || '').trim();
     const categoria_id = req.body.categoria_id;
     const marca_id = req.body.marca_id;
     const precio = req.body.precio !== undefined ? req.body.precio : req.body.price;
@@ -346,18 +346,32 @@ export function createInstrument(req: Request, res: Response, next: NextFunction
     const esta_activo = req.body.esta_activo !== undefined ? req.body.esta_activo : (req.body.is_active !== undefined ? req.body.is_active : 1);
     const specs = req.body.especificaciones || req.body.specs;
 
-    
-    const catExiste = db.prepare('SELECT id FROM categorias WHERE id = ?').get(categoria_id);
+    const catExiste = db.prepare('SELECT id, slug, nombre FROM categorias WHERE id = ?').get(categoria_id) as any;
     if (!catExiste) {
       throw new AppError(`La categoría con ID ${categoria_id} no existe`, 400);
     }
 
-    const marcaExiste = db.prepare('SELECT id FROM marcas WHERE id = ?').get(marca_id);
+    const marcaExiste = db.prepare('SELECT id, nombre FROM marcas WHERE id = ?').get(marca_id) as any;
     if (!marcaExiste) {
       throw new AppError(`La marca con ID ${marca_id} no existe`, 400);
     }
 
-    
+    if (!codigo_sku) {
+      const prefijoMarca = (marcaExiste.nombre || 'INS')
+        .replace(/[^a-zA-Z0-9]/g, '')
+        .slice(0, 3)
+        .toUpperCase()
+        .padEnd(3, 'X');
+      const prefijoCat = (catExiste.slug || catExiste.nombre || 'CAT')
+        .replace(/[^a-zA-Z0-9]/g, '')
+        .slice(0, 3)
+        .toUpperCase()
+        .padEnd(3, 'X');
+      const aleatorio = Math.floor(1000 + Math.random() * 9000);
+      const timestamp = Date.now().toString().slice(-4);
+      codigo_sku = `${prefijoMarca}-${prefijoCat}-${timestamp}${aleatorio}`;
+    }
+
     const skuExiste = db.prepare('SELECT id FROM instrumentos WHERE codigo_sku = ?').get(codigo_sku);
     if (skuExiste) {
       throw new AppError(`Ya existe un instrumento con el SKU '${codigo_sku}'`, 409);

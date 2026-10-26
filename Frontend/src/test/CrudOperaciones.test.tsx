@@ -46,7 +46,7 @@ describe('Operaciones CRUD - Creación de Instrumento con API Simulada', () => {
 
     await waitFor(() => {
       expect(screen.getByText(/El nombre del instrumento es obligatorio/i)).toBeInTheDocument();
-      expect(screen.getByText(/El código SKU es obligatorio/i)).toBeInTheDocument();
+      expect(screen.getByText(/Selecciona una categoría válida/i)).toBeInTheDocument();
     });
   });
 
